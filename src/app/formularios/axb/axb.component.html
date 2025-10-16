@@ -1,0 +1,32 @@
+<p>axb works!</p>
+<div>
+  <h2>Calculadora A x B</h2>
+  
+    <form [formGroup]="axbForm" (ngSubmit)="realizarCalculo()">
+    <div>
+      <label for="numeroA">Número A:</label>
+      <input
+        type="number"
+        id="numeroA"
+        formControlName="numeroA"
+      />
+    </div>
+
+    <div>
+      <label for="numeroB">Número B:</label>
+      <input
+        type="number"
+        id="numeroB"
+       formControlName="numeroB"
+      />
+    </div>
+
+        <button type="submit" [disabled]="axbForm.invalid">
+      Calcular
+    </button>
+  </form>
+
+    <div *ngIf="calculoRealizado">
+    <h3>Resultado: {{resultado}}</h3>
+  </div>
+</div>

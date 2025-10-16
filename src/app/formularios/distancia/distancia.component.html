@@ -1,48 +1,47 @@
-<div class="container mt-5">
+<div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-md-8 col-lg-6">
-
-      <div class="card p-4 shadow-sm">
-        <h1 class="text-center mb-4">Calcular distancia entre 2 puntos</h1>
-        
-        <form [formGroup]="formulario" (ngSubmit)="calcularDistanciaPuntos()">
-          <div class="row">
-            <div class="col-md-6">
-              <h5 class="mb-3">Punto 1</h5>
-              <div class="mb-3">
-                <label for="x1" class="form-label">Coordenada x1:</label>
-                <input id="x1" formControlName="x1" type="number" class="form-control">
-              </div>
-              <div class="mb-3">
-                <label for="y1" class="form-label">Coordenada y1:</label>
-                <input id="y1" formControlName="y1" type="number" class="form-control">
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <h5 class="mb-3">Punto 2</h5>
-              <div class="mb-3">
-                <label for="x2" class="form-label">Coordenada x2:</label>
-                <input id="x2" formControlName="x2" type="number" class="form-control">
-              </div>
-              <div class="mb-3">
-                <label for="y2" class="form-label">Coordenada y2:</label>
-                <input id="y2" formControlName="y2" type="number" class="form-control">
-              </div>
-            </div>
-          </div>
+      <div class="card p-4 shadow border-0 rounded-4">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4 text-primary">Distancia entre dos Puntos</h2>
           
-          <div class="d-grid mt-3">
-            <button type="submit" class="btn btn-primary btn-lg">Calcular</button>
-          </div>
-        </form>
+          <form [formGroup]="formulario" (ngSubmit)="calcularDistanciaPuntos()">
+            <div class="row">
+              <div class="col-md-6">
+                <h5 class="mb-3">Punto 1</h5>
+                <div class="mb-3">
+                  <label for="x1" class="form-label">Coordenada X1:</label>
+                  <input id="x1" formControlName="x1" type="number" class="form-control" placeholder="Ej: 5">
+                </div>
+                <div class="mb-3">
+                  <label for="y1" class="form-label">Coordenada Y1:</label>
+                  <input id="y1" formControlName="y1" type="number" class="form-control" placeholder="Ej: 3">
+                </div>
+              </div>
 
-        <div *ngIf="resultado" class="alert alert-success mt-4" role="alert">
-          <p class="mb-0">La distancia entre los dos puntos es: <strong>{{ resultado }}</strong></p>
+              <div class="col-md-6">
+                <h5 class="mb-3">Punto 2</h5>
+                <div class="mb-3">
+                  <label for="x2" class="form-label">Coordenada X2:</label>
+                  <input id="x2" formControlName="x2" type="number" class="form-control" placeholder="Ej: 9">
+                </div>
+                <div class="mb-3">
+                  <label for="y2" class="form-label">Coordenada Y2:</label>
+                  <input id="y2" formControlName="y2" type="number" class="form-control" placeholder="Ej: 6">
+                </div>
+              </div>
+            </div>
+            
+            <div class="d-grid mt-3">
+              <button type="submit" class="btn btn-primary btn-lg" >Calcular</button>
+            </div>
+          </form>
+
+          <div *ngIf="resultado" class="alert alert-success mt-4 text-center" role="alert">
+            <p class="mb-0 h5">La distancia es: <strong>{{resultado}}</strong></p>
+          </div>
         </div>
-        
       </div>
     </div>
   </div>
 </div>
-
