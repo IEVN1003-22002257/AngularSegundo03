@@ -1,67 +1,111 @@
-<div class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="card p-4 shadow-lg border-0 rounded-4">
-        <div class="card-body">
-          <h2 class="card-title text-center mb-4 text-primary">Calculadora Zodiacal</h2>
-          
-          <form [formGroup]="formulario" (ngSubmit)="imprimirInformacion()">
+<div class="bg-gray-100 min-h-screen w-full flex items-center justify-center p-4 md:p-8">
 
-            <div class="mb-3">
-              <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" id="nombre" class="form-control" formControlName="nombre" placeholder="Escribe tu nombre">
-            </div>
-            
-            <div class="mb-3">
-              <label for="paterno" class="form-label">Apellido Paterno</label>
-              <input type="text" id="paterno" class="form-control" formControlName="paterno" placeholder="Escribe tu apellido paterno">
-            </div>
-            
-            <div class="mb-3">
-              <label for="materno" class="form-label">Apellido Materno</label>
-              <input type="text" id="materno" class="form-control" formControlName="materno" placeholder="Escribe tu apellido materno">
-            </div>
-
-            <label class="form-label">Fecha de Nacimiento</label>
-            <div class="input-group mb-3">
-              <span class="input-group-text">Día</span>
-              <input type="number" class="form-control" placeholder="Día" formControlName="dia">
-              <span class="input-group-text">Mes</span>
-              <input type="number" class="form-control" placeholder="Mes" formControlName="mes">
-              <span class="input-group-text">Año</span>
-              <input type="number" class="form-control" placeholder="Año" formControlName="anio">
-            </div>
-
-            <label class="form-label">Sexo</label>
-            <div class="mb-3">
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="masculino" value="M" formControlName="sexo">
-                <label class="form-check-label" for="masculino">Masculino</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="femenino" value="F" formControlName="sexo">
-                <label class="form-check-label" for="femenino">Femenino</label>
-              </div>
-            </div>
-
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-lg">Calcular</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
     
-    <div class="col-md-8 col-lg-6 mt-4 mt-lg-0">
-      <div *ngIf="resultadoVisible" class="card p-4 shadow-lg text-center h-100 justify-content-center border-0 rounded-4 bg-light">
-        <h2 class="display-6">¡Hola, {{nombreCompleto}}!</h2>
-        <p class="lead mt-3">Tienes {{ edad }} años</p>
-        <p class="lead">Tu signo zodiacal chino es:</p>
-        <div class="mt-3">
-          <img [src]="signo.imagenUrl" [alt]="signo.nombre" class="img-fluid rounded-circle" style="max-width: 150px; border: 4px solid #fff;">
-          <h3 class="mt-2 text-primary">{{signo.nombre}}</h3>
+    <div class="bg-white shadow-2xl rounded-2xl p-6 md:p-8">
+      
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">
+        Calculadora Zodiacal
+      </h2>
+      
+      <form [formGroup]="formulario" (ngSubmit)="imprimirInformacion()" class="space-y-6">
+
+        <div>
+          <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+            Nombre
+          </label>
+          <input type="text" id="nombre" formControlName="nombre" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                 placeholder="Escribe tu nombre">
         </div>
+        
+        <div>
+          <label for="paterno" class="block text-sm font-medium text-gray-700 mb-1">
+            Apellido Paterno
+          </label>
+          <input type="text" id="paterno" formControlName="paterno" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                 placeholder="Escribe tu apellido paterno">
+        </div>
+        
+        <div>
+          <label for="materno" class="block text-sm font-medium text-gray-700 mb-1">
+            Apellido Materno
+          </label>
+          <input type="text" id="materno" formControlName="materno" 
+                 class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500" 
+                 placeholder="Escribe tu apellido materno">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            Fecha de Nacimiento
+          </label>
+          <div class="grid grid-cols-3 gap-3">
+            <input type="number" placeholder="Día" formControlName="dia" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="number" placeholder="Mes" formControlName="mes" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input type="number" placeholder="Año" formControlName="anio" 
+                   class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700">Sexo</label>
+          <div class="flex items-center space-x-6 mt-2">
+            <div class="flex items-center">
+              <input id="masculino" value="M" formControlName="sexo" type="radio" 
+                     class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+              <label for="masculino" class="ml-2 block text-sm text-gray-900">
+                Masculino
+              </label>
+            </div>
+            <div class="flex items-center">
+              <input id="femenino" value="F" formControlName="sexo" type="radio" 
+                     class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
+              <label for="femenino" class="ml-2 block text-sm text-gray-900">
+                Femenino
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="submit" 
+                  class="w-full bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-300 disabled:opacity-50">
+            Calcular
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="resultadoVisible" 
+         class="bg-gray-50 shadow-2xl rounded-2xl p-8 w-full 
+                flex flex-col items-center justify-center text-center 
+                min-h-[400px] lg:min-h-0">
+      
+      <h2 class="text-4xl font-light text-gray-800">
+        ¡Hola, <span class="font-bold">{{nombreCompleto}}</span>!
+      </h2>
+      
+      <p class="text-2xl text-gray-600 mt-3">
+        Tienes {{ edad }} años
+      </p>
+      
+      <p class="text-xl text-gray-600 mt-6">
+        Tu signo zodiacal chino es:
+      </p>
+      
+      <div class="mt-4">
+        <img [src]="signo.imagenUrl" [alt]="signo.nombre" 
+             class="w-36 h-36 rounded-full border-4 border-white shadow-lg mx-auto">
+             
+        <h3 class="mt-3 text-3xl font-bold text-blue-600">
+          {{signo.nombre}}
+        </h3>
       </div>
+      
     </div>
   </div>
 </div>
